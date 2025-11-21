@@ -8,14 +8,16 @@ on:
     branches:
       - main
 
+    # Specifiing the files that will trigger this workflow is not a project
+    # requirement, but it can help reduce unnecessary workflow runs.
     paths:
-      - Dockerfile
-      - app.py
-      - init_db.py
-      - requirements.txt
-      - schema.sql
-      - __init__.py
       - .github/workflows/techtrends-dockerhub.yml
+      - Dockerfile
+      - requirements.txt
+      - app.py
+      - __init__.py
+      - init_db.py
+      - schema.sql
       - static/**
       - templates/**
 
