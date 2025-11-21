@@ -4,11 +4,8 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
-    # Specifiing the files that will trigger this workflow is not a project
+      # Specifiing the files that will trigger this workflow is not a project
     # requirement, but it can help reduce unnecessary workflow runs.
     paths:
       - .github/workflows/techtrends-dockerhub.yml
