@@ -8,6 +8,17 @@ on:
     branches:
       - main
 
+    paths:
+      - Dockerfile
+      - app.py
+      - init_db.py
+      - requirements.txt
+      - schema.sql
+      - __init__.py
+      - .github/workflows/techtrends-dockerhub.yml
+      - static/**
+      - templates/**
+
 jobs:
   docker:
     runs-on: ubuntu-latest
