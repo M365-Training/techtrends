@@ -2,6 +2,10 @@
 
 This is a Flask application that lists the latest articles within the cloud-native ecosystem.
 
+## Remarks from the Author
+
+I installed Rancher Desktop by SUSE and used my own Kubernetes cluster (k3s) on Ubuntu.
+
 ## Run 
 
 To run this application there are 2 steps required:
