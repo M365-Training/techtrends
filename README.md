@@ -6,6 +6,8 @@ This is a Flask application that lists the latest articles within the cloud-nati
 
 I installed Rancher Desktop by SUSE and used my own Kubernetes cluster (k3s) on Ubuntu.
 
+The actual documentation for the steps has been added to the `README.md`-files in the respective folders.
+
 ## Run 
 
 To run this application there are 2 steps required:
@@ -13,7 +15,7 @@ To run this application there are 2 steps required:
 1. Initialize the database by using the `python init_db.py` command. This will create or overwrite the `database.db` file that is used by the web application.
 2.  Run the TechTrends application by using the `python app.py` command. The application is running on port `3111` and you can access it by querying the `http://127.0.0.1:3111/` endpoint.
 
-### Complete setup including venv and a quick test
+### Complete initial setup including venv and a quick test
 
 ```bash
 # Create and activate virtual environment
