@@ -1,6 +1,6 @@
 import sqlite3, logging
 
-from flask import Flask, jsonify, json, render_template, request, url_for, redirect, flash
+from flask import Flask, app, jsonify, json, render_template, request, url_for, redirect, flash
 from werkzeug.exceptions import abort
 
 # Initialize logging so both werkzeug and our app logger share a common format
@@ -16,6 +16,7 @@ logging.basicConfig(
 def get_db_connection():
     connection = sqlite3.connect('database.db')
     connection.row_factory = sqlite3.Row
+    app.config['db_connection_count'] += 1
     return connection
 
 # Function to get a post using its ID
@@ -29,6 +30,7 @@ def get_post(post_id):
 # Define the Flask application
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your secret key'
+app.config['db_connection_count']=0
 
 # Define the main route of the web application 
 @app.route('/')
@@ -96,7 +98,9 @@ def metrics():
     post_count = connection.execute('SELECT COUNT(*) FROM posts').fetchone()[0]
     connection.close()
     response = app.response_class(
-        response=json.dumps({"db_connection_count": 1, "post_count": post_count}),
+        response=json.dumps({
+            "db_connection_count": app.config['db_connection_count'],
+            "post_count": post_count}),
         status=200,
         mimetype='application/json'
     )
