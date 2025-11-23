@@ -1,12 +1,20 @@
 import sqlite3, logging
+import sys
 
 from flask import Flask, app, jsonify, json, render_template, request, url_for, redirect, flash
 from werkzeug.exceptions import abort
 
 # Initialize logging so both werkzeug and our app logger share a common format
 # that includes a timestamp and keeps the "INFO:app" style prefix.
+# Set up logging handlers for STDOUT and STDERR
+stdout_handler = logging.StreamHandler(sys.stdout)
+stdout_handler.setLevel(logging.DEBUG)
+stderr_handler = logging.StreamHandler(sys.stderr)
+stderr_handler.setLevel(logging.ERROR)
+
 logging.basicConfig(
     level=logging.DEBUG,
+    handlers=[ stdout_handler, stderr_handler ],
     format='%(levelname)s:%(name)s %(asctime)s %(message)s',
     datefmt='[%d/%b/%Y %H:%M:%S]'
 )
